@@ -2,8 +2,8 @@
 $a =   5; 
 $b =   '05';
 $time = getdate();
-$variable1 = 3;
-$variable2 = 6;
+$x = 7;
+$y = 8;
 
 var_dump ( $a ==  $b ); // Почему true?
 echo '<br>Нет сравнения типов, всё привелось к integer.<br>';
@@ -19,9 +19,12 @@ echo '<br>Строка при смене типа, преобразуется в
 
 echo "<h1>Текущее время равно: $time[hours] часов $time[minutes] минут $time[seconds] секунд</h1>";
 
-echo "Сначала переменная 1 = $variable1, а переменная 2 = $variable2<br>";
-$variable1 = ($variable1 += $variable2-$variable1);
-echo "Теперь переменная 1 = $variable1, а переменная 2 = $variable2";
+echo "Сначала переменная 1 = $x, а переменная 2 = $y<br>";
+//$x = $x - $y;
+//$y = $y + $x;
+//$x = $y - $x;
+$y = ($x += $y -= $x) - $y;
+echo "Теперь переменная 1 = $x, а переменная 2 = $y";
 
 
 ?>
