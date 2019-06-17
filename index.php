@@ -124,7 +124,6 @@ function changeSpaces($string){
 };
 echo changeSpaces($enterString5);
 
-
-
-
+//6 задание ----------------------------------
+//сделал в файле index6.php
 ?>
