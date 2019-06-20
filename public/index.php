@@ -14,19 +14,22 @@
   <body>
        <div class="container1243" style="width: 1000px; margin: 30px auto; background-color: #aaa; ">
            <?php
-           $imgArray = [
-                1 => ['auto_01'],
-                2 => ['auto_02'],
-                3 => ['auto_03'],
-                4 => ['auto_04'],
-                5 => ['auto_05'],
-                6 => ['auto_06'],
-                7 => ['auto_07'],
-                8 => ['auto_08'],
-                9 => ['auto_09']
-            ];
+           $mysql = mysqli_connect('php.base', 'root', '', 'pictures');
+           
+           $query = mysqli_query($mysqli, "SELECT * FROM cars");
+           
+           $imgArray = [];
+           
+           while ($row = mysqli_fetch_assoc($query)) {
+            $imgArray[] = $row;
+           };
+
+            $mysqli_close($mysqli);
+           
+           print_r($imgArray);    
            foreach($imgArray as $img):?>
-           <a href="img/originals/<?=$img[0]?>.jpg"><img src="img/min/<?=$img[0]?>min.jpg" class="rounded float-left" alt="..."></a>
+           
+           <a href="#"><img src="<?=$img[path_min]?>" class="rounded float-left" alt="..."></a>
            
            <?php endforeach ?>
            <div src="#" class="rounded float-right" alt="Заглушка" stile="width 300px; height=10px"></div>
