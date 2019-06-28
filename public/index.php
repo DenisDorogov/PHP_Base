@@ -9,28 +9,75 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <style>.rounded{margin: 0 20px 20px 0; box-shadow: 0 0 10px #666}</style>
 
-    <title>Lesson 4</title>
+    <title>Lesson 6</title>
   </head>
   <body>
-       <div class="container1243" style="width: 1000px; margin: 30px auto; background-color: #aaa; ">
+       <div class="container1243" style="width: 1000px; margin: 30px auto; padding: 30px; background-color: #aaa; ">
+           <form>
+               <div class="form-group">
+                   <label for="formGroupExampleInput">Первый операнд</label>
+                   <input name="operand1" type="text" class="form-control" id="formGroupExampleInput" placeholder="Введите число">
+               </div>
+               <div class="form-group">
+                   <label for="formGroupExampleInput2">Второй операнд</label>
+                   <input name="operand2" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Введите число">
+               </div>
+               <div class="form-row align-items-center">
+                   <div class="col-auto my-1">
+                       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                       <select name="operate" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                           <option selected>Выберете операцию</option>
+                           <option value="<?=$operate="sum"?>">Сложить</option>
+                           <option value="<?=$operate="dif"?>">Вычесть</option>
+                           <option value="<?=$operate="mult"?>">Умножить</option>
+                           <option value="<?=$operate="div"?>">Разделить</option>
+                       </select>
+                   </div>
+                   <div class="btn-group mr-2" role="group" aria-label="First group">
+                       <button name="operate" type="submit" class="btn btn-secondary" value="<?=$operate="sum"?>">+</button>
+                       <button name="operate" type="submit" class="btn btn-secondary" value="<?=$operate="dif"?>">-</button>
+                       <button name="operate" type="submit" class="btn btn-secondary" value="<?=$operate="mult"?>">*</button>
+                       <button name="operate" type="submit" class="btn btn-secondary" value="<?=$operate="div"?>">/</button>
+                   </div>
+                   <div class="col-auto my-1">
+                       <button type="submit" class="btn btn-primary">Вычислить</button>
+                   </div>
+               </div>
+           </form>
            <?php
-           $imgArray = [
-                1 => ['auto_01'],
-                2 => ['auto_02'],
-                3 => ['auto_03'],
-                4 => ['auto_04'],
-                5 => ['auto_05'],
-                6 => ['auto_06'],
-                7 => ['auto_07'],
-                8 => ['auto_08'],
-                9 => ['auto_09']
-            ];
-           foreach($imgArray as $img):?>
-           <a href="img/originals/<?=$img[0]?>.jpg"><img src="img/min/<?=$img[0]?>min.jpg" class="rounded float-left" alt="..."></a>
+            $operate = $_GET['operate'] ?? NULL; 
+            $operand1 = $_GET['operand1'] ?? NULL; 
+            $operand2 = $_GET['operand2'] ?? NULL; 
+            function mathOperation($var1, $var2, $operate) {
+                switch($operate) {
+                    case 'sum':
+                        return $var1 + $var2;
+                        break;
+                    case 'dif':
+                        return $var1 - $var2;
+                        break;
+                    case 'mult':
+                        return $var1 * $var2;
+                        break;
+                    case 'div':
+                        if ($var2 == 0) {
+                            return ("На ноль делить нельзя");
+                            break;
+                        }
+                        else {
+                            return $var1 / $var2;
+                            break;
+                        };
+                }
+            };        
+            $result = mathOperation($operand1, $operand2, $operate);
+            ?>
+           <div class="alert alert-light" role="alert">
+               <?=$result?>
+           </div>
            
-           <?php endforeach ?>
-           <div src="#" class="rounded float-right" alt="Заглушка" stile="width 300px; height=10px"></div>
        </div>
+       
     
 
     <!-- Optional JavaScript -->
