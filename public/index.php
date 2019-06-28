@@ -9,29 +9,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <style>.rounded{margin: 0 20px 20px 0; box-shadow: 0 0 10px #666}</style>
 
-    <title>Lesson 4</title>
+    <title>Lesson 5</title>
   </head>
   <body>
        <div class="container1243" style="width: 1000px; margin: 30px auto; background-color: #aaa; ">
            <?php
            $mysql = mysqli_connect('php.base', 'root', '', 'pictures');
            
-           $query = mysqli_query($mysqli, "SELECT * FROM cars");
+           $query = mysqli_query($mysql, "SELECT * FROM cars;");
            
            $imgArray = [];
-           
            while ($row = mysqli_fetch_assoc($query)) {
             $imgArray[] = $row;
            };
-
-            $mysqli_close($mysqli);
            
-           print_r($imgArray);    
+           mysqli_close($mysql);
+           
+//           print_r($imgArray);    
            foreach($imgArray as $img):?>
            
-           <a href="#"><img src="<?=$img[path_min]?>" class="rounded float-left" alt="..."></a>
+           <a href="<?=$img['path']?>"><img src="<?=$img['path_min']?>" class="rounded float-left" alt="..."></a>
            
            <?php endforeach ?>
+           
            <div src="#" class="rounded float-right" alt="Заглушка" stile="width 300px; height=10px"></div>
        </div>
     
