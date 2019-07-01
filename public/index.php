@@ -9,27 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <style>.rounded{margin: 0 20px 20px 0; box-shadow: 0 0 10px #666}</style>
 
-    <title>Lesson 4</title>
+    <title>Lesson 7</title>
   </head>
   <body>
        <div class="container1243" style="width: 1000px; margin: 30px auto; background-color: #aaa; ">
-           <?php
-           $imgArray = [
-                1 => ['auto_01'],
-                2 => ['auto_02'],
-                3 => ['auto_03'],
-                4 => ['auto_04'],
-                5 => ['auto_05'],
-                6 => ['auto_06'],
-                7 => ['auto_07'],
-                8 => ['auto_08'],
-                9 => ['auto_09']
-            ];
-           foreach($imgArray as $img):?>
-           <a href="img/originals/<?=$img[0]?>.jpg"><img src="img/min/<?=$img[0]?>min.jpg" class="rounded float-left" alt="..."></a>
            
-           <?php endforeach ?>
-           <div src="#" class="rounded float-right" alt="Заглушка" stile="width 300px; height=10px"></div>
+           <h3>Пока не до конца разобрался с шестым заданием из-за категоричного отсутсвия времени. Но немного над ним поработал. Это задание буду делать дальше. Надеюсь в паузе после курса, которую я взял, навести порядок в голове, и по подробней почитать книги.</h3>
+           
        </div>
     
 
