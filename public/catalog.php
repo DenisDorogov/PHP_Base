@@ -488,7 +488,9 @@
             <a href="catalog.html" class="filter-type">DESIGNER</a>
         </div>
         <div class="panel-catalog" id="app">
-            <div class="panel-filter-top">
+           
+            
+               <div class="panel-filter-top">
                 <div class="trandingnow">
                     <h2>TRANDING NOW</h2>
                     <a href="#" class="filter-crumbs">Bohemian</a>
@@ -523,7 +525,7 @@
                         </p>
                     </form>
                 </div>
-                <div class="panel-sort">
+                <form  method="get" class="panel-sort">
                     <label class="sortbye">Sort By
                         <select class="sortbye-select" v-model="sortBy">
                             <option value="title" >Name</option>
@@ -531,26 +533,28 @@
                         </select>
                     </label>
                     <label class="sortbye">Show
-                        <select class="sortbye-select" v-model="countShowItems">
+                        <select name="count" class="sortbye-select" v-model="countShowItems" value="<?=$count?>">
                             <option value="9">9</option>
                             <option value="15">15</option>
                             <option value="30">30</option>
                         </select>
                     </label>
-                </div>
+                </form>
             </div>
       
       
+           
+           
             <div>
                 <div class="items">
                    <?php 
                     include __DIR__.'/../public/goods.php'; 
-                    foreach ($goods as $good): ?>
+                    foreach ($filteredGoods as $item): ?>
                     <div class="item">
-                        <a href="<?=$good['urlSinglePage']?>"><img src="<?=$good['img']?>" alt="<?=$good['name']?>">
+                        <a href="<?=$item['urlSinglePage']?>"><img src="<?=$item['img']?>" alt="<?=$item['name']?>">
                             <div class="item-text">
-                                <p><?=$good['name']?></p>
-                                <h3><?=$good['price']?></h3>
+                                <p><?=$item['name']?></p>
+                                <h3><?=$item['price']?></h3>
                             </div>
                         </a><a href="#" class="add">Add to Card</a></div>
                         <?php endforeach ?>
@@ -558,9 +562,7 @@
                             
                                  
                                            
-<!--              <products :query="filterValue" :page="pageNumber" :sort="sortBy" :count="countShowItems" :maxprice="priceRange" @onbuy="handleBuyClick"></products>-->
-
-                
+            
             </div>
           
             <div class="panel-catalog-lower">

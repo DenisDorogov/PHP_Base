@@ -28,9 +28,31 @@ function myDB_connect () {
 $query = "SELECT * FROM shop . goods";
 $resultQuery = mysqli_query(myDB_connect(), $query);
 $goods = [];
+$count = $_GET['count'] ?? NULL;
+
 while ($row = mysqli_fetch_assoc($resultQuery)) {
 	$goods[] = $row;
 };
+$filteredGoods = [];
+function goodsList($count, $page = 1) {
+    global $filteredGoods, $goods;
+    $result = [];
+//    var_dump($goods);
+    foreach ($goods as $good) {
+        $i = 1;
+        if ($good['idgoods'] > ($count * ($page-1)) && $good['idgoods'] <= $count * $page) $result[] = $good;
+    };
+    $filteredGoods = $result;
+    return $result;
+};
+
+goodsList($count);
+//$filteredGoods = [0=>1, 1=>2, 2=> array('three', 'four', 'five')];
+//print_r($count);
+var_dump($count);
+//echo '<br/> $filteredGoods';
+//var_dump($filteredGoods);
+
 
 
 
